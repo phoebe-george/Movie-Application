@@ -10,10 +10,10 @@ This is the backend service for the MovieApp, a movie management and browsing pl
 |--------|----------------------------------|--------------------------------------|
 | POST   | `/auth/register`                | Register a new user                  |
 | POST   | `/auth/login`                   | Authenticate and return JWT token    |
-| GET    | `/movies/`                      | Get all movies                       |
+| GET    | `/movies/all`                      | Get all movies                       |
 | GET    | `/movies/{id}`                  | Get details of a single movie by ID  |
 | POST   | `/movies/add`                   | Add a new movie (admin only)         |
-| DELETE | `/movies/delete/{id}`          | Delete a movie by ID (admin only)    |
+| DELETE | `/movies/{id}`          | Delete a movie by ID (admin only)    |
 
 > 📌 All secured endpoints require a valid JWT token.
 
@@ -21,14 +21,14 @@ This is the backend service for the MovieApp, a movie management and browsing pl
 
 ## 🗃️ Database
 
-- **Type**: MySQL
+- **Type**: postgres
 - **Default Port**: `3306`
 - **Schema Name**: `movie_app` (or as defined in `application.properties`)
 - **Tables**:
   - `users`
   - `movies`
 
-Ensure MySQL is running and the schema is created before starting the application.
+Ensure postgres is running and the schema is created before starting the application.
 
 ---
 
@@ -38,7 +38,7 @@ Ensure MySQL is running and the schema is created before starting the applicatio
 - Spring Boot
 - Spring Security (JWT Auth)
 - Spring Data JPA
-- MySQL
+- postgres
 
 ---
 
