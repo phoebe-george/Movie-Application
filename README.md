@@ -1,60 +1,70 @@
 # 🎬 MovieApp Backend
 
-This is the backend service for the MovieApp, a movie management and browsing platform. It provides RESTful APIs for authentication, movie listing, and admin operations. The backend is built using **Spring Boot** and uses **MySQL** as the database.
+T# 🎬 Movie App
 
----
+A full-stack Movie Management Application that allows users to register, login, and explore movie information fetched from the OMDB API. Admin users can manage movie data, including adding or removing movies.
 
-## 🚀 API Endpoints
+## 🛠 Technologies Used
 
-| Method | Endpoint                         | Description                          |
-|--------|----------------------------------|--------------------------------------|
-| POST   | `/auth/register`                | Register a new user                  |
-| POST   | `/auth/login`                   | Authenticate and return JWT token    |
-| GET    | `/movies/`                      | Get all movies                       |
-| GET    | `/movies/{id}`                  | Get details of a single movie by ID  |
-| POST   | `/movies/add`                   | Add a new movie (admin only)         |
-| DELETE | `/movies/delete/{id}`          | Delete a movie by ID (admin only)    |
+### Frontend (Angular)
+- Angular 16+
+- TypeScript
+- Angular Material / SCSS
+- Session Storage for auth token handling
+- OMDB API for fetching movie info
 
-> 📌 All secured endpoints require a valid JWT token.
-
----
-
-## 🗃️ Database
-
-- **Type**: MySQL
-- **Default Port**: `3306`
-- **Schema Name**: `movie_app` (or as defined in `application.properties`)
-- **Tables**:
-  - `users`
-  - `movies`
-
-Ensure MySQL is running and the schema is created before starting the application.
-
----
-
-## ⚙️ Tech Stack
-
-- Java 8+
-- Spring Boot
-- Spring Security (JWT Auth)
+### Backend (Spring Boot)
+- Spring Boot 3.4.x
+- Spring Security (JWT-based auth)
 - Spring Data JPA
-- MySQL
+- postgres
+- REST APIs
+
+---
+## 🚀 Features
+
+### 👥 User Features
+- Register / Login
+- View list of movies
+- View detailed info about a movie
+- Search for new movies via OMDB API
+
+### 👨‍💼 Admin Features
+- Add a movie (fetched from OMDB API)
+- Remove a movie
+- See search bar to add movies
 
 ---
 
-## 🛠️ Setup Instructions
+## 🧾 API Endpoints
 
-1. **Clone the project**
+### Auth
+- `POST /auth/register` - Register user
+- `POST /auth/login` - Login and receive JWT
 
-   ```bash
-   git clone <your-repo-url>
-   cd MovieApp
-## Test in Postman
+### Movie API
+- `GET /movies` - Get all saved movies
+- `POST /movies/add` - Add a movie (admin only)
+- `DELETE /movies/delete?id=IMDB_ID` - Remove a movie
+- `GET /movies/search?title=TITLE` - Search for movie from OMDB
 
-Use the following base URL:
-http://localhost:8083/auth/register
- http://localhost:8083/auth/login
- http://localhost:8083/movies/ 
-http://localhost:8083/movies/add 
-http://localhost:8083/movies/delete/{id}
- http://localhost:8083/movies/{id} 
+---
+
+## 🔐 Authentication & Roles
+
+- JWT token is returned on successful login or registration.
+- `sessionStorage` is used to store the token and role.
+- Role-based behavior:
+  - Admins can add/delete movies
+  - Users can only view and search
+
+---
+
+## 🔧 Setup & Run
+
+### 🖥 Backend (Spring Boot)
+
+1. Clone the project
+2. Open in your IDE
+3. Configure `application.properties` with your postgres DB
+4. Run the project on port `8083`
