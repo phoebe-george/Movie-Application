@@ -1,0 +1,25 @@
+<div style="background-color: #000">
+  <div *ngIf="isAdmin" class="search-bar-container">
+    <div class="search-bar-wrapper">
+      <input
+        type="text"
+        placeholder="Search new movies..."
+        [(ngModel)]="searchTerm"
+        (keyup.enter)="searchMovies()"
+        class="styled-search-input"
+      />
+      <button (click)="searchMovies()" class="styled-search-button">
+        Search
+      </button>
+    </div>
+  </div>
+  <div class="movie-list">
+    <div class="movie-card" *ngFor="let movie of movies">
+      <app-movies-card
+        [movie]="movie"
+        [isNew]="movie.isNew"
+        (refreshMovies)="loadAllMovies()"
+      ></app-movies-card>
+    </div>
+  </div>
+</div>

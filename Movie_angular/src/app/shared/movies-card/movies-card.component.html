@@ -1,0 +1,25 @@
+<div class="card">
+  <img [src]="movie.poster" alt="Poster" class="poster" />
+  <div class="card-content">
+    <h3 class="movie-title">{{ movie.movieName }}</h3>
+
+    <ng-container *ngIf="isAdmin; else userBtn">
+      <button
+        *ngIf="!isNew; else addBtn"
+        (click)="removeMovie()"
+        class="btn admin"
+      >
+        Remove
+      </button>
+      <ng-template #addBtn>
+        <button (click)="addMovie()" class="btn admin add">Add</button>
+      </ng-template>
+    </ng-container>
+
+    <ng-template #userBtn>
+      <button (click)="viewDetails()" class="btn user">Details</button>
+    </ng-template>
+  </div>
+</div>
+
+  
