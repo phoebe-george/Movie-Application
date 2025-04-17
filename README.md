@@ -1,4 +1,4 @@
-# 🎬 MovieApp Backend
+# 🎬 Movie App
 
 T# 🎬 Movie App
 
